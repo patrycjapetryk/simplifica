@@ -2,10 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 // import Img from "gatsby-image"
-
-import Layout from "../components/layout"
-// import Image from "../components/image"
-
+import Header from "../components/Header/Header"
 export const query = graphql`
   {
     prismic {
@@ -66,14 +63,15 @@ const IndexPage = ({ data }) => {
   } = data
 
   return (
-    <Layout>
+    <>
+      <Header />
       <img src={node.logo_image.url} width="30px" alt="Simplifica logo" />
       {/* <Img fixed={node.logo_imageSharp.childImageSharp.fixed} /> */}
       <h1>{node.company_name[0].text}</h1>
       <p>Welcome to my homepage! </p>
       <StyledDiv />
       <Link to="/blog/">Go to blog</Link>
-    </Layout>
+    </>
   )
 }
 
