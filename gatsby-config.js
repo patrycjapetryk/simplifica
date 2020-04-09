@@ -1,16 +1,17 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env`,
 })
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Simplifica`,
+    description: `Strony internetowe, sklepy internetowe, aplikacje.`,
+    author: `@pp`,
   },
   plugins: [
     // `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-layout`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -19,12 +20,29 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-prismic-graphql",
+      resolve: 'gatsby-source-prismic-graphql',
       options: {
-        repositoryName: "simplifica-pl", // (REQUIRED, replace with your own)
+        repositoryName: 'simplifica-pl', // (REQUIRED, replace with your own)
         accessToken: process.env.API_PRISMIC_KEY, // (optional API access token)
-        path: "/preview", // (optional preview path. Default: /preview)
+        path: '/preview', // (optional preview path. Default: /preview)
         previews: false, // (optional, activated Previews. Default: false)
+      },
+    },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Raleway`,
+            variants: [`600`, `700`],
+            subsets: [`latin-ext`],
+          },
+          {
+            family: `Lato`,
+            variants: [`400`, `600`],
+            subsets: [`latin-ext`],
+          },
+        ],
       },
     },
     `gatsby-transformer-sharp`,
