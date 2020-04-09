@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+import styled from "styled-components"
 // import Img from "gatsby-image"
 
 import Layout from "../components/layout"
@@ -49,6 +50,12 @@ export const query = graphql`
   }
 `
 
+const StyledDiv = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+`
+
 const IndexPage = ({ data }) => {
   const {
     prismic: {
@@ -64,7 +71,7 @@ const IndexPage = ({ data }) => {
       {/* <Img fixed={node.logo_imageSharp.childImageSharp.fixed} /> */}
       <h1>{node.company_name[0].text}</h1>
       <p>Welcome to my homepage! </p>
-
+      <StyledDiv />
       <Link to="/blog/">Go to blog</Link>
     </Layout>
   )
