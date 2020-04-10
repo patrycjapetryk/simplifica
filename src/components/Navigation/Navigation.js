@@ -33,7 +33,7 @@ const Navigation = () => (
       </StyledListItem>
 
       <StyledListItem>
-        <Link to="/#strony">strony</Link>
+        <Link to="/#strony-internetowe">strony</Link>
       </StyledListItem>
 
       <StyledListItem>

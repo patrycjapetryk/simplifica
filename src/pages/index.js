@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 // import styled from "styled-components"
+const slugify = require('slugify')
 
 export const query = graphql`
   {
@@ -29,6 +30,34 @@ export const query = graphql`
                   paragraph
                 }
               }
+              ... on PRISMIC_HomepageBodyPortfolio {
+                type
+                primary {
+                  paragraph
+                  title
+                }
+                fields {
+                  image
+                  paragraph
+                }
+              }
+              ... on PRISMIC_HomepageBodyAbout_me {
+                type
+                primary {
+                  title
+                  paragraph
+                  description
+                  image
+                }
+              }
+              ... on PRISMIC_HomepageBodyContact {
+                type
+                primary {
+                  title
+                  paragraph
+                  description
+                }
+              }
             }
           }
         }
@@ -55,12 +84,21 @@ const IndexPage = ({ data }) => {
       {body.map((item, index) => {
         return (
           <div key={index}>
-            <h2>{item.primary.title[0].text}</h2>
-            <p>
-              {item.primary.paragraph[0].text
-                ? item.primary.paragraph[0].text
-                : ''}
-            </p>
+            {item.primary.title && (
+              <h2
+                id={slugify(item.primary.title[0].text, {
+                  lower: true,
+                })}
+              >
+                {item.primary.title[0].text}
+              </h2>
+            )}
+            {item.primary.paragraph && <p>{item.primary.paragraph[0].text}</p>}
+
+            {item.primary.description && (
+              <p>{item.primary.description[0].text}</p>
+            )}
+
             {item.primary.image && (
               <img
                 src={item.primary.image.url}
@@ -72,13 +110,15 @@ const IndexPage = ({ data }) => {
             {item.fields &&
               item.fields.map((slide, slideIndex) => (
                 <div key={slideIndex}>
-                  <img
-                    src={slide.image.url}
-                    width={slide.image.dimensions.width}
-                    alt={slide.image.alt}
-                  />
-                  <h3>{slide.title[0].text}</h3>
-                  <p>{slide.paragraph[0].text}</p>
+                  {slide.image && (
+                    <img
+                      src={slide.image.url}
+                      width={slide.image.dimensions.width}
+                      alt={slide.image.alt}
+                    />
+                  )}
+                  {slide.title && <h3>{slide.title[0].text}</h3>}
+                  {slide.paragraph && <p>{slide.paragraph[0].text}</p>}
                 </div>
               ))}
           </div>
