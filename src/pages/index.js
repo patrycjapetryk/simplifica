@@ -103,54 +103,6 @@ const IndexPage = ({ data }) => {
       })}
     </>
   )
-
-  // return (
-  //   <>
-  //     {body.map((item, index) => {
-  //       return (
-  //         <div key={index}>
-  //           {item.primary.title && (
-  //             <h2
-  //               id={slugify(item.primary.title[0].text, {
-  //                 lower: true,
-  //               })}
-  //             >
-  //               {item.primary.title[0].text}
-  //             </h2>
-  //           )}
-  //           {item.primary.paragraph && <p>{item.primary.paragraph[0].text}</p>}
-
-  //           {item.primary.description && (
-  //             <p>{item.primary.description[0].text}</p>
-  //           )}
-
-  //           {item.primary.image && (
-  //             <img
-  //               src={item.primary.image.url}
-  //               width={item.primary.image.dimensions.width}
-  //               alt={item.primary.image.alt}
-  //             />
-  //           )}
-
-  //           {item.fields &&
-  //             item.fields.map((slide, slideIndex) => (
-  //               <div key={slideIndex}>
-  //                 {slide.image && (
-  //                   <img
-  //                     src={slide.image.url}
-  //                     width={slide.image.dimensions.width}
-  //                     alt={slide.image.alt}
-  //                   />
-  //                 )}
-  //                 {slide.title && <h3>{slide.title[0].text}</h3>}
-  //                 {slide.paragraph && <p>{slide.paragraph[0].text}</p>}
-  //               </div>
-  //             ))}
-  //         </div>
-  //       )
-  //     })}
-  //   </>
-  // )
 }
 
 export default IndexPage
