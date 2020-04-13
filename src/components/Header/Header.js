@@ -1,4 +1,5 @@
 import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import Logo from '../Logo/Logo'
@@ -11,11 +12,49 @@ const StyledHeader = styled.header`
   margin-bottom: 80px;
 `
 
-const Header = () => (
-  <StyledHeader>
-    <Logo />
-    <Navigation />
-  </StyledHeader>
-)
+const Header = () => {
+  const { prismic } = useStaticQuery(
+    graphql`
+      query {
+        prismic {
+          allFooters {
+            edges {
+              node {
+                text
+              }
+            }
+          }
+          allNavigations {
+            edges {
+              node {
+                _meta {
+                  id
+                }
+                title
+                body {
+                  ... on PRISMIC_NavigationBodyNavigation_item {
+                    primary {
+                      link
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+
+  const allNavigationsEdges = prismic.allNavigations.edges
+
+  return (
+    <StyledHeader>
+      <Logo />
+      <Navigation data={allNavigationsEdges[1].node.body} />
+    </StyledHeader>
+  )
+}
 
 export default Header

@@ -27,17 +27,36 @@ const Footer = () => {
               }
             }
           }
+          allNavigations {
+            edges {
+              node {
+                _meta {
+                  id
+                }
+                title
+                body {
+                  ... on PRISMIC_NavigationBodyNavigation_item {
+                    primary {
+                      link
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     `
   )
 
-  const node = prismic.allFooters.edges[0].node
+  const allFootersNode = prismic.allFooters.edges[0].node
+  const allNavigationsEdges = prismic.allNavigations.edges
   return (
     <StyledFooter>
-      <Navigation />
+      <Navigation data={allNavigationsEdges[0].node.body} />
       <StyledParagraph>
-        {`©${new Date().getFullYear()} ${node.text[0].text}`}
+        {`©${new Date().getFullYear()} ${allFootersNode.text[0].text}`}
       </StyledParagraph>
     </StyledFooter>
   )

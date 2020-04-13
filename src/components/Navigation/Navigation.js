@@ -15,34 +15,28 @@ const StyledListItem = styled.li`
   display: flex;
   align-items: center;
   list-style: none;
-
-  a {
-    margin-left: 30px;
-    text-decoration: none;
-    color: inherit;
-    font-family: 'Lato';
-    font-weight: 400;
-  }
 `
 
-const Navigation = () => (
+const StyledLink = styled(Link)`
+  margin-left: 30px;
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Lato';
+  font-weight: 400;
+`
+
+const Navigation = ({ data }) => (
   <StyledNav>
     <StyledList>
-      <StyledListItem>
-        <Link to="/#co-robie">co robię</Link>
-      </StyledListItem>
-
-      <StyledListItem>
-        <Link to="/#strony-internetowe">strony</Link>
-      </StyledListItem>
-
-      <StyledListItem>
-        <Link to="/#o-mnie">o mnie</Link>
-      </StyledListItem>
-
-      <StyledListItem>
-        <Link to="/#kontakt">kontakt</Link>
-      </StyledListItem>
+      {data.map((item, index) => {
+        return (
+          <StyledListItem key={index}>
+            <StyledLink to={`/${item.primary.link[0].text}`}>
+              {item.primary.name[0].text}
+            </StyledLink>
+          </StyledListItem>
+        )
+      })}
     </StyledList>
   </StyledNav>
 )
