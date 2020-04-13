@@ -24,6 +24,14 @@ const Header = () => {
               }
             }
           }
+          allLogos {
+            edges {
+              node {
+                company_name
+                logo_image
+              }
+            }
+          }
           allNavigations {
             edges {
               node {
@@ -48,10 +56,11 @@ const Header = () => {
   )
 
   const allNavigationsEdges = prismic.allNavigations.edges
+  const allLogosNode = prismic.allLogos.edges[0].node
 
   return (
     <StyledHeader>
-      <Logo />
+      <Logo data={allLogosNode} />
       <Navigation data={allNavigationsEdges[1].node.body} />
     </StyledHeader>
   )
