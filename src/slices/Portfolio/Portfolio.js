@@ -1,4 +1,7 @@
 import React from 'react'
+
+import Button from '../../components/atoms/Button/Button'
+
 const slugify = require('slugify')
 
 const Portfolio = ({ data }) => (
@@ -27,6 +30,8 @@ const Portfolio = ({ data }) => (
           {slide.paragraph && <p>{slide.paragraph[0].text}</p>}
         </div>
       ))}
+
+    <Button>Więcej...</Button>
   </div>
 )
 

@@ -1,4 +1,7 @@
 import React from 'react'
+
+import Button from '../../components/atoms/Button/Button'
+
 const slugify = require('slugify')
 
 const Slider = ({ data }) => (
@@ -13,6 +16,9 @@ const Slider = ({ data }) => (
       </h2>
     )}
     {data.primary.paragraph && <p>{data.primary.paragraph[0].text}</p>}
+
+    <Button>Więcej...</Button>
+
     {data.primary.image && (
       <img
         src={data.primary.image.url}
