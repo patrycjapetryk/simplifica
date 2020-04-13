@@ -1,21 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
 
-import Navigation from '../Navigation/Navigation'
+import Logo from '../../molecules/Logo/Logo'
+import Navigation from '../../molecules/Navigation/Navigation'
 
-const StyledFooter = styled.footer`
+const StyledHeader = styled.header`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   text-align: left;
+  margin-bottom: 80px;
 `
 
-const StyledParagraph = styled.p`
-  margin-left: 100px;
-`
-
-const Footer = () => {
+const Header = () => {
   const { prismic } = useStaticQuery(
     graphql`
       query {
@@ -24,6 +21,14 @@ const Footer = () => {
             edges {
               node {
                 text
+              }
+            }
+          }
+          allLogos {
+            edges {
+              node {
+                company_name
+                logo_image
               }
             }
           }
@@ -50,16 +55,15 @@ const Footer = () => {
     `
   )
 
-  const allFootersNode = prismic.allFooters.edges[0].node
   const allNavigationsEdges = prismic.allNavigations.edges
+  const allLogosNode = prismic.allLogos.edges[0].node
+
   return (
-    <StyledFooter>
-      <Navigation data={allNavigationsEdges[0].node.body} />
-      <StyledParagraph>
-        {`©${new Date().getFullYear()} ${allFootersNode.text[0].text}`}
-      </StyledParagraph>
-    </StyledFooter>
+    <StyledHeader>
+      <Logo data={allLogosNode} />
+      <Navigation data={allNavigationsEdges[1].node.body} />
+    </StyledHeader>
   )
 }
 
-export default Footer
+export default Header
