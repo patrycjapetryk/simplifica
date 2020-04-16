@@ -1,22 +1,11 @@
 import React from 'react'
 
 import Button from '../../components/atoms/Button/Button'
-
-const slugify = require('slugify')
+import Title from '../../components/atoms/Title/Title'
 
 const Slider = ({ data }) => (
-  <div>
-    {data.primary.title && (
-      <h2
-        id={slugify(data.primary.title[0].text, {
-          lower: true,
-        })}
-      >
-        {data.primary.title[0].text}
-      </h2>
-    )}
-    {data.primary.paragraph && <p>{data.primary.paragraph[0].text}</p>}
-
+  <section>
+    <Title data={data} />
     <Button>Więcej...</Button>
 
     {data.primary.image && (
@@ -26,7 +15,7 @@ const Slider = ({ data }) => (
         alt={data.primary.image.alt}
       />
     )}
-  </div>
+  </section>
 )
 
 export default Slider

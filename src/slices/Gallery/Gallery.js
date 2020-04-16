@@ -1,18 +1,10 @@
 import React from 'react'
-const slugify = require('slugify')
+
+import Title from '../../components/atoms/Title/Title'
 
 const Gallery = ({ data }) => (
-  <div>
-    {data.primary.title && (
-      <h2
-        id={slugify(data.primary.title[0].text, {
-          lower: true,
-        })}
-      >
-        {data.primary.title[0].text}
-      </h2>
-    )}
-    {data.primary.paragraph && <p>{data.primary.paragraph[0].text}</p>}
+  <section>
+    <Title data={data} />
 
     {data.fields &&
       data.fields.map((slide, slideIndex) => (
@@ -28,7 +20,7 @@ const Gallery = ({ data }) => (
           {slide.paragraph && <p>{slide.paragraph[0].text}</p>}
         </div>
       ))}
-  </div>
+  </section>
 )
 
 export default Gallery
