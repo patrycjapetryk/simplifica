@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import Logo from '../../molecules/Logo/Logo'
 import Navigation from '../../molecules/Navigation/Navigation'
+import Hamburger from '../../atoms/Hamburger/Hamburger'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -62,6 +63,7 @@ const Header = () => {
     <StyledHeader>
       <Logo data={allLogosNode} />
       <Navigation data={allNavigationsEdges[1].node.body} />
+      <Hamburger />
     </StyledHeader>
   )
 }
