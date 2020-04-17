@@ -6,8 +6,14 @@ const StyledContainer = styled.div`
 `
 const StyledHamburger = styled.div`
   width: 28px;
+  min-height: 16px;
   margin-left: auto;
   overflow: visible;
+  cursor: pointer;
+
+  @media (min-width: 750px) {
+    display: none;
+  }
 `
 const StyledLine = styled.div`
   height: 2px;
@@ -17,29 +23,24 @@ const StyledLine = styled.div`
   transform-origin: calc(50% - 5px) 50%;
   transition: 0.3s;
 
-  /* &:nth-child(1) {
-    transform: rotate(45deg);
+  &:nth-child(1) {
+    transform: ${({ showMenu }) => (showMenu ? 'rotate(45deg)' : '')};
   }
   &:nth-child(2) {
-    transform: rotate(-45deg);
+    transform: ${({ showMenu }) => (showMenu ? 'rotate(-45deg)' : '')};
   }
   &:nth-child(3) {
-    display: none;
-  } */
+    display: ${({ showMenu }) => (showMenu ? 'none' : 'block')};
+  }
 `
 
-const Hamburger = () => (
+const Hamburger = ({ setShowMenu, showMenu }) => (
   <StyledContainer>
-    <StyledHamburger>
-      <StyledLine></StyledLine>
-      <StyledLine></StyledLine>
-      <StyledLine></StyledLine>
+    <StyledHamburger onClick={() => setShowMenu(!showMenu)}>
+      <StyledLine showMenu={showMenu}></StyledLine>
+      <StyledLine showMenu={showMenu}></StyledLine>
+      <StyledLine showMenu={showMenu}></StyledLine>
     </StyledHamburger>
-    {/* <StyledHamburger>
-      <StyledLine></StyledLine>
-      <StyledLine></StyledLine>
-      <StyledLine></StyledLine>
-    </StyledHamburger> */}
   </StyledContainer>
 )
 

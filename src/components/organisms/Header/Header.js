@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
@@ -59,11 +59,26 @@ const Header = () => {
   const allNavigationsEdges = prismic.allNavigations.edges
   const allLogosNode = prismic.allLogos.edges[0].node
 
+  const [showMenu, setShowMenu] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 750) {
+        setShowMenu(false)
+      } else {
+        setShowMenu(true)
+      }
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <StyledHeader>
       <Logo data={allLogosNode} />
-      <Navigation data={allNavigationsEdges[1].node.body} />
-      <Hamburger />
+      <Navigation data={allNavigationsEdges[1].node.body} showMenu={showMenu} />
+      <Hamburger showMenu={showMenu} setShowMenu={setShowMenu} />
     </StyledHeader>
   )
 }
