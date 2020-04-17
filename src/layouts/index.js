@@ -8,7 +8,7 @@ const MainLayout = ({ children }) => {
     <>
       <GlobalStyle />
       <Header />
-      {children}
+      <main>{children}</main>
       <Footer />
     </>
   )
