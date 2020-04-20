@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledContainer = styled.div`
-  flex-grow: 1;
-`
 const StyledHamburger = styled.div`
+  position: fixed;
+  top: 25px;
+  right: 30px;
   width: 28px;
   min-height: 16px;
-  margin-left: auto;
   overflow: visible;
   cursor: pointer;
 
@@ -24,24 +23,24 @@ const StyledLine = styled.div`
   transition: 0.3s;
 
   &:nth-child(1) {
-    transform: ${({ showMenu }) => (showMenu ? 'rotate(45deg)' : '')};
+    transform: ${({ showMobileMenu }) =>
+      showMobileMenu ? 'rotate(45deg)' : ''};
   }
   &:nth-child(2) {
-    transform: ${({ showMenu }) => (showMenu ? 'rotate(-45deg)' : '')};
+    transform: ${({ showMobileMenu }) =>
+      showMobileMenu ? 'rotate(-45deg)' : ''};
   }
   &:nth-child(3) {
-    display: ${({ showMenu }) => (showMenu ? 'none' : 'block')};
+    display: ${({ showMobileMenu }) => (showMobileMenu ? 'none' : 'block')};
   }
 `
 
-const Hamburger = ({ setShowMenu, showMenu }) => (
-  <StyledContainer>
-    <StyledHamburger onClick={() => setShowMenu(!showMenu)}>
-      <StyledLine showMenu={showMenu}></StyledLine>
-      <StyledLine showMenu={showMenu}></StyledLine>
-      <StyledLine showMenu={showMenu}></StyledLine>
-    </StyledHamburger>
-  </StyledContainer>
+const Hamburger = ({ setShowMobileMenu, showMobileMenu }) => (
+  <StyledHamburger onClick={() => setShowMobileMenu(!showMobileMenu)}>
+    <StyledLine showMobileMenu={showMobileMenu}></StyledLine>
+    <StyledLine showMobileMenu={showMobileMenu}></StyledLine>
+    <StyledLine showMobileMenu={showMobileMenu}></StyledLine>
+  </StyledHamburger>
 )
 
 export default Hamburger

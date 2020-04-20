@@ -14,8 +14,11 @@ const FadeIn = keyframes`
 const StyledNav = styled.nav`
   margin-left: 90px;
   transition: 0.4s;
-  display: ${({ showMenu }) => (showMenu ? 'block' : 'none')};
   animation: ${FadeIn} 0.4s linear;
+
+  @media (max-width: 750px) {
+    display: ${({ showMobileMenu }) => (showMobileMenu ? 'block' : 'none')};
+  }
 `
 
 const StyledList = styled.ul`
@@ -52,9 +55,9 @@ const StyledLink = styled(Link)`
   color: inherit;
 `
 
-const Navigation = ({ data, showMenu }) => {
+const Navigation = ({ data, showMobileMenu }) => {
   return (
-    <StyledNav showMenu={showMenu}>
+    <StyledNav showMobileMenu={showMobileMenu}>
       <StyledList>
         {data.map((item, index) => {
           return (
