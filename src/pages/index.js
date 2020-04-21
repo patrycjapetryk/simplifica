@@ -43,6 +43,13 @@ export const query = graphql`
                 fields {
                   image
                   paragraph
+                  imageSharp {
+                    childImageSharp {
+                      fixed(width: 300, quality: 100) {
+                        ...GatsbyImageSharpFixed_tracedSVG
+                      }
+                    }
+                  }
                 }
               }
               ... on PRISMIC_HomepageBodyAbout_me {
