@@ -10,6 +10,8 @@ const StyledButton = styled.button`
   letter-spacing: 0.05em;
 `
 
-const Button = ({ children }) => <StyledButton>{children}</StyledButton>
+const Button = ({ children, onClick }) => (
+  <StyledButton onClick={onClick}>{children}</StyledButton>
+)
 
 export default Button
