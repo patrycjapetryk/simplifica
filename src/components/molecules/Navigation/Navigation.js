@@ -16,7 +16,7 @@ const StyledNav = styled.nav`
   transition: 0.4s;
   animation: ${FadeIn} 0.4s linear;
 
-  @media (max-width: 750px) {
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
     display: ${({ showMobileMenu }) => (showMobileMenu ? 'block' : 'none')};
   }
 `
@@ -25,7 +25,7 @@ const StyledList = styled.ul`
   display: flex;
   list-style: none;
 
-  @media (max-width: 750px) {
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
     position: fixed;
     left: 0;
     top: 0;
@@ -39,10 +39,10 @@ const StyledList = styled.ul`
 
 const StyledListItem = styled.li`
   font-family: 'Lato';
-  font-weight: 400;
+  font-weight: ${({ theme }) => theme.regular};
   list-style: none;
 
-  @media (max-width: 750px) {
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
     text-align: center;
     font-size: 24px;
     line-height: 2;

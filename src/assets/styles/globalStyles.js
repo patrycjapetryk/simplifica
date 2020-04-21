@@ -1,14 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-  :root {
-    --dark-blue: #4A658A;
-    --blue: #88C1EE;
-    --light-blue: #F0F6FC;
-    --grey: #97A6C6;
-    --red: #CA525C;
-  }
-
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -24,8 +16,16 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 80px 65px 0;
     font-family: 'Lato';
-    color: var(--grey);
+    font-weight: ${({ theme }) => theme.regular};
+    color: ${({ theme }) => theme.grey};
     text-align: center;
+
+    @media (max-width: ${({ theme }) => theme.mediumScreen}) {
+      padding: 20px 18px;
+    }
+    @media (max-width: ${({ theme }) => theme.smallScreen}) {
+      padding: 20px 12px;
+    }
   }
 
   button {
@@ -41,7 +41,6 @@ const GlobalStyle = createGlobalStyle`
   ul {
     padding: 0;
     margin: 0;
-  }
-`
+  }`
 
 export default GlobalStyle

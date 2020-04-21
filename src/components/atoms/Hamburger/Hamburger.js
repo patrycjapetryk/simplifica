@@ -10,14 +10,14 @@ const StyledHamburger = styled.div`
   overflow: visible;
   cursor: pointer;
 
-  @media (min-width: 750px) {
+  @media (min-width: ${({ theme }) => theme.mediumScreen}) {
     display: none;
   }
 `
 const StyledLine = styled.div`
   height: 2px;
   border-radius: 2px;
-  background-color: var(--grey);
+  background-color: ${({ theme }) => theme.grey};
   margin: 5px 0;
   transform-origin: calc(50% - 5px) 50%;
   transition: 0.3s;

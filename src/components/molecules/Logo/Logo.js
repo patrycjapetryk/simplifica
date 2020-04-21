@@ -4,14 +4,14 @@ import styled from 'styled-components'
 
 const StyledDiv = styled.div`
   font-family: 'Raleway';
-  font-weight: 600;
+  font-weight: ${({ theme }) => theme.medium};
   display: flex;
   align-items: center;
 `
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: var(--dark-blue);
+  color: ${({ theme }) => theme.darkBlue};
   font-size: 22px;
   margin-left: 10px;
 `

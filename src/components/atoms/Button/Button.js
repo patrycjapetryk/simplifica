@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const StyledButton = styled.button`
   padding: 12px 36px;
-  background-color: var(--red);
+  background-color: ${({ theme }) => theme.red};
   border-radius: 24px;
   color: #fff;
   font-size: 14px;
