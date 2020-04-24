@@ -11,6 +11,8 @@ const StyledHeader = styled.header`
   align-items: center;
   text-align: left;
   margin-bottom: 80px;
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
 `
 
 const Header = () => {

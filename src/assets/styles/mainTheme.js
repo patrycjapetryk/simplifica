@@ -9,4 +9,7 @@ export const theme = {
   bold: '700',
   mediumScreen: '750px',
   smallScreen: '550px',
+  mainFont: 'Lato',
+  secondFont: 'Raleway',
+  maxWidth: '1080px',
 }

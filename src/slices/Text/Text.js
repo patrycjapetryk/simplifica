@@ -1,19 +1,47 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import Title from '../../components/atoms/Title/Title'
 
+const StyledSection = styled.section`
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
+`
+
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const StyledParagraph = styled.p`
+  text-align: left;
+  width: 50%;
+  padding: 0 3% 0 10%;
+  line-height: 1.4;
+`
+
+const StyledImg = styled.img`
+  width: 50%;
+  margin-top: -50px;
+`
+
 const Text = ({ data }) => (
-  <section>
+  <StyledSection>
     <Title data={data} />
-    {data.primary.description && <p>{data.primary.description[0].text}</p>}
-    {data.primary.image && (
-      <img
-        src={data.primary.image.url}
-        width={data.primary.image.dimensions.width}
-        alt={data.primary.image.alt}
-      />
-    )}
-  </section>
+    <StyledDiv>
+      {data.primary.description && (
+        <StyledParagraph>{data.primary.description[0].text}</StyledParagraph>
+      )}
+      {data.primary.image && (
+        <StyledImg
+          src={data.primary.image.url}
+          width={data.primary.image.dimensions.width}
+          alt={data.primary.image.alt}
+        />
+      )}
+    </StyledDiv>
+  </StyledSection>
 )
 
 export default Text

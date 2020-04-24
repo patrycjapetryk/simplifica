@@ -1,18 +1,19 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-const StyledButton = styled.button`
+const StyledLink = styled(Link)`
   padding: 12px 36px;
-  margin-top: 40px;
   background-color: ${({ theme }) => theme.red};
   border-radius: 24px;
   color: #fff;
   font-size: 14px;
   letter-spacing: 0.05em;
+  text-decoration: none;
 `
 
-const Button = ({ children, onClick }) => (
-  <StyledButton onClick={onClick}>{children}</StyledButton>
+const ReadMoreLink = ({ children, to }) => (
+  <StyledLink to={to}>{children}</StyledLink>
 )
 
-export default Button
+export default ReadMoreLink
