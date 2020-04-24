@@ -6,10 +6,12 @@ import Navigation from '../../molecules/Navigation/Navigation'
 import Copyrights from '../../atoms/Copyrights/Copyrights'
 
 const StyledFooter = styled.footer`
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   text-align: left;
+  background-color: ${({ theme }) => theme.lightBlue};
 `
 
 const Footer = () => {

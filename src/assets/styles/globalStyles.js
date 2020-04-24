@@ -14,18 +14,11 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    padding: 80px 65px 0;
+    padding: 0;
     font-family: 'Lato';
     font-weight: ${({ theme }) => theme.regular};
     color: ${({ theme }) => theme.grey};
     text-align: center;
-
-    @media (max-width: ${({ theme }) => theme.mediumScreen}) {
-      padding: 20px 18px;
-    }
-    @media (max-width: ${({ theme }) => theme.smallScreen}) {
-      padding: 20px 12px;
-    }
   }
 
   button {

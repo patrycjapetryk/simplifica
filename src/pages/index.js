@@ -45,8 +45,8 @@ export const query = graphql`
                   paragraph
                   imageSharp {
                     childImageSharp {
-                      fixed(width: 300, quality: 100) {
-                        ...GatsbyImageSharpFixed_tracedSVG
+                      fluid(maxWidth: 600, quality: 100) {
+                        ...GatsbyImageSharpFluid_tracedSVG
                       }
                     }
                   }

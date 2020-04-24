@@ -18,7 +18,9 @@ const StyledParagraph = styled.p`
   text-align: left;
   width: 50%;
   padding: 0 3% 0 10%;
-  line-height: 1.4;
+  font-size: 15px;
+  font-weight: ${({ theme }) => theme.regular};
+  line-height: 1.8;
 `
 
 const StyledImg = styled.img`

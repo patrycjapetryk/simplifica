@@ -17,7 +17,25 @@ const StyledDiv = styled.div`
 
 const StyledArticle = styled.article`
   width: 33.33%;
-  padding: 0 20px;
+  padding: 22px 20px;
+`
+
+const StyledImage = styled(Img)`
+  width: 80%;
+  display: inline-block;
+`
+
+const StyledImg = styled.img`
+  width: 80%;
+  display: inline-block;
+`
+
+const StyledParagraph = styled.p`
+  max-width: 360px;
+  margin: 30px auto 45px;
+  font-size: 15px;
+  font-weight: ${({ theme }) => theme.regular};
+  line-height: 1.8;
 `
 
 const Portfolio = ({ data }) => {
@@ -29,21 +47,21 @@ const Portfolio = ({ data }) => {
       <StyledDiv>
         {data.fields &&
           data.fields.map((slide, index) => {
-            const sharpImage = slide.imageSharp.childImageSharp.fixed
+            const sharpImage = slide.imageSharp.childImageSharp.fluid
             return (
               <React.Fragment key={index}>
                 {index < visibleSlides && (
                   <StyledArticle>
                     {sharpImage ? (
-                      <Img fixed={sharpImage} />
+                      <StyledImage fluid={sharpImage} />
                     ) : (
-                      <img
+                      <StyledImg
                         src={slide.image.url}
                         width={slide.image.dimensions.width}
                         alt={slide.image.alt}
                       />
                     )}
-                    <p>{slide.paragraph[0].text}</p>
+                    <StyledParagraph>{slide.paragraph[0].text}</StyledParagraph>
                   </StyledArticle>
                 )}
               </React.Fragment>

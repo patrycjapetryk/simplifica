@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledParagraph = styled.p`
-  margin-left: 100px;
+  margin: 0 30px 0 180px;
+  font-size: 13px;
 `
 
 const Footer = ({ data }) => (

@@ -10,9 +10,8 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   text-align: left;
-  margin-bottom: 80px;
+  margin: 80px auto;
   max-width: ${({ theme }) => theme.maxWidth};
-  margin: 0 auto;
 `
 
 const Header = () => {

@@ -15,7 +15,22 @@ const StyledDiv = styled.div`
 
 const StyledArticle = styled.article`
   width: 33.33%;
-  padding: 0 20px;
+  padding: 0 22px;
+`
+
+const StyledTitle = styled.h3`
+  color: ${({ theme }) => theme.darkBlue};
+  font-family: ${({ theme }) => theme.secondFont};
+  font-size: 22px;
+  font-weight: ${({ theme }) => theme.medium};
+`
+
+const StyledParagraph = styled.p`
+  max-width: 360px;
+  margin: 30px auto 45px;
+  font-size: 15px;
+  font-weight: ${({ theme }) => theme.regular};
+  line-height: 1.8;
 `
 
 const Gallery = ({ data }) => (
@@ -32,8 +47,10 @@ const Gallery = ({ data }) => (
                 alt={slide.image.alt}
               />
             )}
-            {slide.title && <h3>{slide.title[0].text}</h3>}
-            {slide.paragraph && <p>{slide.paragraph[0].text}</p>}
+            {slide.title && <StyledTitle>{slide.title[0].text}</StyledTitle>}
+            {slide.paragraph && (
+              <StyledParagraph>{slide.paragraph[0].text}</StyledParagraph>
+            )}
           </StyledArticle>
         ))}
     </StyledDiv>
