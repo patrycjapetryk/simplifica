@@ -5,6 +5,10 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Navigation from '../../molecules/Navigation/Navigation'
 import Copyrights from '../../atoms/Copyrights/Copyrights'
 
+const FooterWrapper = styled.section`
+  position: relative;
+`
+
 const StyledFooter = styled.footer`
   height: 80px;
   display: flex;
@@ -14,10 +18,20 @@ const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.lightBlue};
 `
 
+const StyledBackgroundImg = styled.img`
+  position: absolute;
+  top: -156px;
+  left: -10px;
+  width: 300px;
+`
+
 const Footer = () => {
-  const { prismic } = useStaticQuery(
+  const { prismic, file } = useStaticQuery(
     graphql`
       query {
+        file(name: { eq: "bg-footer" }) {
+          publicURL
+        }
         prismic {
           allFooters {
             edges {
@@ -52,10 +66,13 @@ const Footer = () => {
   const allFootersNode = prismic.allFooters.edges[0].node
   const allNavigationsEdges = prismic.allNavigations.edges
   return (
-    <StyledFooter>
-      <Navigation data={allNavigationsEdges[0].node.body} />
-      <Copyrights data={allFootersNode} />
-    </StyledFooter>
+    <FooterWrapper>
+      <StyledFooter>
+        <Navigation data={allNavigationsEdges[0].node.body} />
+        <Copyrights data={allFootersNode} />
+        <StyledBackgroundImg src={file.publicURL} alt="" />
+      </StyledFooter>
+    </FooterWrapper>
   )
 }
 

@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import Img from 'gatsby-image'
+import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import Button from '../../components/atoms/Button/Button'
 import Title from '../../components/atoms/Title/Title'
+
+const SectionWrapper = styled.section`
+  position: relative;
+`
 
 const StyledSection = styled.section`
   max-width: ${({ theme }) => theme.maxWidth};
@@ -38,45 +43,64 @@ const StyledParagraph = styled.p`
   line-height: 1.8;
 `
 
+const StyledBackgroundImg = styled.img`
+  position: absolute;
+  top: -350px;
+  right: -300px;
+  width: 500px;
+`
+
 const Portfolio = ({ data }) => {
+  const imageData = useStaticQuery(graphql`
+    {
+      file(name: { eq: "bg-portfolio" }) {
+        publicURL
+      }
+    }
+  `)
+
   const [visibleSlides, setVisibleSlides] = useState(3)
 
   return (
-    <StyledSection>
-      <Title data={data} />
-      <StyledDiv>
-        {data.fields &&
-          data.fields.map((slide, index) => {
-            const sharpImage = slide.imageSharp.childImageSharp.fluid
-            return (
-              <React.Fragment key={index}>
-                {index < visibleSlides && (
-                  <StyledArticle>
-                    {sharpImage ? (
-                      <StyledImage fluid={sharpImage} />
-                    ) : (
-                      <StyledImg
-                        src={slide.image.url}
-                        width={slide.image.dimensions.width}
-                        alt={slide.image.alt}
-                      />
-                    )}
-                    <StyledParagraph>{slide.paragraph[0].text}</StyledParagraph>
-                  </StyledArticle>
-                )}
-              </React.Fragment>
-            )
-          })}
-      </StyledDiv>
-
-      <Button
-        onClick={() =>
-          visibleSlides === 3 ? setVisibleSlides(9) : setVisibleSlides(3)
-        }
-      >
-        {visibleSlides === 3 ? 'Więcej...' : 'Mniej'}
-      </Button>
-    </StyledSection>
+    <SectionWrapper>
+      <StyledSection>
+        <Title data={data} />
+        <StyledDiv>
+          {data.fields &&
+            data.fields.map((slide, index) => {
+              const sharpImage = slide.imageSharp.childImageSharp.fluid
+              return (
+                <React.Fragment key={index}>
+                  {index < visibleSlides && (
+                    <StyledArticle>
+                      {sharpImage ? (
+                        <StyledImage fluid={sharpImage} />
+                      ) : (
+                        <StyledImg
+                          src={slide.image.url}
+                          width={slide.image.dimensions.width}
+                          alt={slide.image.alt}
+                        />
+                      )}
+                      <StyledParagraph>
+                        {slide.paragraph[0].text}
+                      </StyledParagraph>
+                    </StyledArticle>
+                  )}
+                </React.Fragment>
+              )
+            })}
+        </StyledDiv>
+        <Button
+          onClick={() =>
+            visibleSlides === 3 ? setVisibleSlides(9) : setVisibleSlides(3)
+          }
+        >
+          {visibleSlides === 3 ? 'Więcej...' : 'Mniej'}
+        </Button>
+        <StyledBackgroundImg src={imageData.file.publicURL} alt="" />
+      </StyledSection>
+    </SectionWrapper>
   )
 }
 

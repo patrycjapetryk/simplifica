@@ -12,12 +12,22 @@ const StyledHeader = styled.header`
   text-align: left;
   margin: 80px auto;
   max-width: ${({ theme }) => theme.maxWidth};
+  position: relative;
+`
+const StyledBackgroundImg = styled.img`
+  position: absolute;
+  top: -600px;
+  left: -420px;
+  width: 880px;
 `
 
 const Header = () => {
-  const { prismic } = useStaticQuery(
+  const { prismic, file } = useStaticQuery(
     graphql`
       query {
+        file(name: { eq: "bg-simplifica" }) {
+          publicURL
+        }
         prismic {
           allFooters {
             edges {
@@ -73,6 +83,7 @@ const Header = () => {
         showMobileMenu={showMobileMenu}
         setShowMobileMenu={setShowMobileMenu}
       />
+      <StyledBackgroundImg src={file.publicURL} alt="" />
     </StyledHeader>
   )
 }
