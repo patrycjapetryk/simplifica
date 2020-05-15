@@ -9,8 +9,9 @@ const StyledSection = styled.section`
 `
 
 const StyledParagraph = styled.p`
-  max-width: 150px;
-  text-align: left;
+  /* max-width: 150px; */
+  /* text-align: left; */
+  padding-bottom: 100px;
 `
 
 const Contact = ({ data }) => (
