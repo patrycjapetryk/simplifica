@@ -23,6 +23,11 @@ const StyledDiv = styled.div`
 const StyledArticle = styled.article`
   width: 33.33%;
   padding: 22px 20px;
+
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
+    width: 80%;
+    margin: 0 auto;
+  }
 `
 
 const StyledImage = styled(Img)`
@@ -48,6 +53,7 @@ const StyledBackgroundImg = styled.img`
   top: -350px;
   right: -300px;
   width: 500px;
+  z-index: -1;
 `
 
 const Portfolio = ({ data }) => {

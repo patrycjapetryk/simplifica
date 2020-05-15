@@ -21,6 +21,14 @@ const StyledDiv = styled.div`
 const StyledArticle = styled.article`
   width: 33.33%;
   padding: 0 22px;
+
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
+    width: 50%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.smallScreen}) {
+    width: 100%;
+  }
 `
 
 const StyledTitle = styled.h3`
@@ -45,6 +53,7 @@ const StyledBackgroundImg = styled.img`
   top: -200px;
   left: -270px;
   width: 550px;
+  z-index: -1;
 `
 
 const Gallery = ({ data }) => {

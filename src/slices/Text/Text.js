@@ -17,6 +17,10 @@ const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
+    flex-direction: column-reverse;
+  }
 `
 
 const StyledParagraph = styled.p`
@@ -26,11 +30,21 @@ const StyledParagraph = styled.p`
   font-size: 15px;
   font-weight: ${({ theme }) => theme.regular};
   line-height: 1.8;
+
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
+    text-align: center;
+    width: 100%;
+  }
 `
 
 const StyledImg = styled.img`
   width: 50%;
   margin-top: -50px;
+
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
+    width: 80%;
+    margin-top: -10px;
+  }
 `
 
 const StyledBackgroundImg = styled.img`
@@ -38,6 +52,7 @@ const StyledBackgroundImg = styled.img`
   top: -350px;
   left: -240px;
   width: 450px;
+  z-index: -1;
 `
 
 const Text = ({ data }) => {

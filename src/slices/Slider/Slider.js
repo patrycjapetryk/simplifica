@@ -10,23 +10,45 @@ const StyledSection = styled.section`
   min-height: 350px;
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
+  padding: 0 20px;
 `
 
 const StyledDiv = styled.div`
   position: relative;
   text-align: left;
   max-width: 360px;
+
+  @media (max-width: ${({ theme }) => theme.smallScreen}) {
+    max-width: 300px;
+  }
 `
 const StyledImg = styled.img`
   position: absolute;
   top: -180px;
   right: -100px;
+  z-index: -1;
+
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
+    right: -300px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.smallScreen}) {
+    right: -400px;
+  }
 `
 const StyledBackgroundImg = styled.img`
   position: absolute;
   bottom: -20px;
   left: 40%;
   width: 132px;
+
+  @media (max-width: ${({ theme }) => theme.mediumScreen}) {
+    width: 110px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.smallScreen}) {
+    width: 100px;
+  }
 `
 
 const Slider = ({ data }) => {

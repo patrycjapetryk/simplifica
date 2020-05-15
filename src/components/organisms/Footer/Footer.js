@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Navigation from '../../molecules/Navigation/Navigation'
 import Copyrights from '../../atoms/Copyrights/Copyrights'
 
-const FooterWrapper = styled.section`
+const FooterWrapper = styled.div`
   position: relative;
 `
 
@@ -16,6 +16,12 @@ const StyledFooter = styled.footer`
   justify-content: flex-end;
   text-align: left;
   background-color: ${({ theme }) => theme.lightBlue};
+
+  @media (max-width: ${({ theme }) => theme.normalScreen}) {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+  }
 `
 
 const StyledBackgroundImg = styled.img`
@@ -65,6 +71,7 @@ const Footer = () => {
 
   const allFootersNode = prismic.allFooters.edges[0].node
   const allNavigationsEdges = prismic.allNavigations.edges
+
   return (
     <FooterWrapper>
       <StyledFooter>

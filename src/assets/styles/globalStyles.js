@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: ${({ theme }) => theme.regular};
     color: ${({ theme }) => theme.grey};
     text-align: center;
+    overflow-x: hidden;
   }
 
   button {

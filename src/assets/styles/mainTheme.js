@@ -7,9 +7,10 @@ export const theme = {
   regular: '400',
   medium: '600',
   bold: '700',
-  mediumScreen: '750px',
+  normalScreen: '1100px',
+  mediumScreen: '770px',
   smallScreen: '550px',
   mainFont: 'Lato',
   secondFont: 'Raleway',
-  maxWidth: '1080px',
+  maxWidth: '1100px',
 }

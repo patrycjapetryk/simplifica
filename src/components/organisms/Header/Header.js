@@ -13,12 +13,15 @@ const StyledHeader = styled.header`
   margin: 80px auto;
   max-width: ${({ theme }) => theme.maxWidth};
   position: relative;
+  padding: 0 20px;
+  z-index: 3;
 `
 const StyledBackgroundImg = styled.img`
   position: absolute;
   top: -600px;
   left: -420px;
   width: 880px;
+  pointer-events: none;
 `
 
 const Header = () => {

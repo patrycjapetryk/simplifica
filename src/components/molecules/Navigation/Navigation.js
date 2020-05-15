@@ -12,7 +12,7 @@ const FadeIn = keyframes`
 `
 
 const StyledNav = styled.nav`
-  margin-left: 90px;
+  margin: 0 30px 0 90px;
   transition: 0.4s;
   animation: ${FadeIn} 0.4s linear;
 
