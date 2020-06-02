@@ -6,6 +6,7 @@ import Portfolio from '../slices/Portfolio/Portfolio'
 import Contact from '../slices/Contact/Contact'
 import Gallery from '../slices/Gallery/Gallery'
 import Text from '../slices/Text/Text'
+import SEO from '../components/atoms/Seo/Seo'
 
 export const query = graphql`
   {
@@ -92,6 +93,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <>
+      <SEO title="Strona główna" />
       {body.map((item, index) => {
         switch (item.type) {
           case 'slider':

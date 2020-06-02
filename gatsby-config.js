@@ -4,12 +4,12 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Simplifica`,
+    title: `Simplifica - strony internetowe i sklepy`,
     description: `Strony internetowe, sklepy internetowe, aplikacje.`,
     author: `@pp`,
   },
   plugins: [
-    // `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-layout`,
     {
