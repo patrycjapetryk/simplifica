@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const StyledParagraph = styled.p`
   margin: 0 30px 0 180px;
-  font-size: 13px;
+  font-size: 11px;
 `
 
 const Footer = ({ data }) => (
