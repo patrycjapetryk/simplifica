@@ -24,62 +24,59 @@ const StyledBackgroundImg = styled.img`
   pointer-events: none;
 `
 
-const Header = () => {
-  const { prismic, file } = useStaticQuery(
-    graphql`
-      query {
-        file(name: { eq: "bg-simplifica" }) {
-          publicURL
+const query = graphql`
+  query {
+    file(name: { eq: "bg-simplifica" }) {
+      publicURL
+    }
+    prismic {
+      allFooters {
+        edges {
+          node {
+            text
+          }
         }
-        prismic {
-          allFooters {
-            edges {
-              node {
-                text
-              }
-            }
+      }
+      allLogos {
+        edges {
+          node {
+            company_name
+            logo_image
           }
-          allLogos {
-            edges {
-              node {
-                company_name
-                logo_image
-              }
+        }
+      }
+      allNavigations {
+        edges {
+          node {
+            _meta {
+              id
             }
-          }
-          allNavigations {
-            edges {
-              node {
-                _meta {
-                  id
-                }
-                title
-                body {
-                  ... on PRISMIC_NavigationBodyNavigation_item {
-                    primary {
-                      link
-                      name
-                    }
-                  }
+            title
+            body {
+              ... on PRISMIC_NavigationBodyNavigation_item {
+                primary {
+                  link
+                  name
                 }
               }
             }
           }
         }
       }
-    `
-  )
+    }
+  }
+`
 
-  const allNavigationsEdges = prismic.allNavigations.edges
-  const allLogosNode = prismic.allLogos.edges[0].node
+const Header = () => {
+  const { prismic, file } = useStaticQuery(query)
 
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   return (
     <StyledHeader>
-      <Logo data={allLogosNode} />
+      <Logo data={prismic.allLogos.edges[0].node} />
       <Navigation
-        data={allNavigationsEdges[1].node.body}
+        data={prismic.allNavigations.edges[1].node.body}
         showMobileMenu={showMobileMenu}
       />
       <Hamburger

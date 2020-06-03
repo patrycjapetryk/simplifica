@@ -31,52 +31,49 @@ const StyledBackgroundImg = styled.img`
   width: 300px;
 `
 
-const Footer = () => {
-  const { prismic, file } = useStaticQuery(
-    graphql`
-      query {
-        file(name: { eq: "bg-footer" }) {
-          publicURL
-        }
-        prismic {
-          allFooters {
-            edges {
-              node {
-                text
-              }
-            }
+const query = graphql`
+  query {
+    file(name: { eq: "bg-footer" }) {
+      publicURL
+    }
+    prismic {
+      allFooters {
+        edges {
+          node {
+            text
           }
-          allNavigations {
-            edges {
-              node {
-                _meta {
-                  id
-                }
-                title
-                body {
-                  ... on PRISMIC_NavigationBodyNavigation_item {
-                    primary {
-                      link
-                      name
-                    }
-                  }
+        }
+      }
+      allNavigations {
+        edges {
+          node {
+            _meta {
+              id
+            }
+            title
+            body {
+              ... on PRISMIC_NavigationBodyNavigation_item {
+                primary {
+                  link
+                  name
                 }
               }
             }
           }
         }
       }
-    `
-  )
+    }
+  }
+`
 
-  const allFootersNode = prismic.allFooters.edges[0].node
-  const allNavigationsEdges = prismic.allNavigations.edges
+const Footer = () => {
+  const { prismic, file } = useStaticQuery(query)
 
   return (
     <FooterWrapper>
       <StyledFooter>
-        <Navigation data={allNavigationsEdges[0].node.body} />
-        <Copyrights data={allFootersNode} />
+        <Navigation data={prismic.allNavigations.edges[0].node.body} />
+        <Copyrights data={prismic.allFooters.edges[0].node} />
         <StyledBackgroundImg src={file.publicURL} alt="" />
       </StyledFooter>
     </FooterWrapper>
