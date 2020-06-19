@@ -53,7 +53,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:image`,
-          content: `assets/icons/og.png`,
+          content: `https://simplifica.pl/og.png`,
         },
         {
           name: `twitter:card`,
