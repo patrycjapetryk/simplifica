@@ -29,20 +29,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: `Raleway`,
-            variants: [`600`, `700`],
-            subsets: [`latin-ext`],
-          },
-          {
-            family: `Lato`,
-            variants: [`400`, `600`],
-            subsets: [`latin-ext`],
-          },
-        ],
+        fonts: [`Raleway\:600, 700`, `Lato\:400,400i,600`],
+        display: 'swap',
       },
     },
     `gatsby-transformer-sharp`,
