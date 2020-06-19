@@ -76,7 +76,7 @@ const Header = () => {
     <StyledHeader>
       <Logo data={prismic.allLogos.edges[0].node} />
       <Navigation
-        data={prismic.allNavigations.edges[1].node.body}
+        data={prismic.allNavigations.edges[0].node.body}
         showMobileMenu={showMobileMenu}
       />
       <Hamburger
