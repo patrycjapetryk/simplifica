@@ -72,8 +72,8 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <StyledFooter>
-        <Navigation data={prismic.allNavigations.edges[0].node.body} />
-        <Copyrights data={prismic.allFooters.edges[1].node} />
+        <Navigation data={prismic.allNavigations.edges[1].node.body} />
+        <Copyrights data={prismic.allFooters.edges[0].node} />
         <StyledBackgroundImg src={file.publicURL} alt="" />
       </StyledFooter>
     </FooterWrapper>
